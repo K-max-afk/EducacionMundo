@@ -1,0 +1,6 @@
+const data={
+cuba:{p:50,html:`<div class='panel'><h2>🇨🇺 Cuba</h2><h3>Acceso</h3><p>Educación gratuita con alta cobertura, aunque afectada por escasez de recursos e infraestructura.</p><h3>Igualdad</h3><p>Acceso similar para hombres y mujeres.</p><h3>Programas</h3><p>Financiamiento estatal y alfabetización.</p><h3>Empoderamiento</h3><p>Alta alfabetización y formación profesional.</p></div>`},
+haiti:{p:100,html:`<div class='panel'><h2>🇭🇹 Haití</h2><h3>Acceso</h3><p>Limitado por pobreza, inseguridad y costos.</p><h3>Igualdad</h3><p>Persisten barreras para niñas.</p><h3>Programas</h3><p>Apoyo de UNICEF y UNESCO.</p><h3>Empoderamiento</h3><p>La educación ayuda a reducir la pobreza.</p></div>`}
+};
+function show(k){content.innerHTML=data[k].html;bar.style.width=data[k].p+'%';}
+function compare(){compare.innerHTML=`<div class='panel'><h2>⚖ Comparación</h2><table><tr><th>Aspecto</th><th>Cuba</th><th>Haití</th></tr><tr><td>Acceso</td><td>Alto</td><td>Bajo</td></tr><tr><td>Gratuidad</td><td>Sí</td><td>Limitada</td></tr><tr><td>Infraestructura</td><td>Con dificultades</td><td>Muy limitada</td></tr></table><h3>💡 Ecuador</h3><p>Invertir en docentes, infraestructura, becas y tecnología.</p><h3>❓Pregunta</h3><p>¿Cómo influye la educación en el desarrollo de un país?</p></div>`}
