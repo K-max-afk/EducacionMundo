@@ -1,6 +1,12 @@
-/* =========================
-   RESET
-========================= */
+/*==================================================
+        EDUCACIÓN Y OPORTUNIDADES EN EL MUNDO
+                  STYLE.CSS
+                  PARTE 1
+===================================================*/
+
+/*=========================
+        RESET
+=========================*/
 
 *{
     margin:0;
@@ -14,20 +20,22 @@ html{
 
 body{
 
-    font-family:Arial, Helvetica, sans-serif;
-
-    background:linear-gradient(135deg,#1f4e79,#0f2027,#203a43,#2c5364);
-
-    color:white;
+    font-family:'Poppins',sans-serif;
 
     overflow-x:hidden;
+
+    color:#fff;
+
+    background:#07152d;
+
+    min-height:100vh;
 
 }
 
 
-/* =========================
-   FONDO ANIMADO
-========================= */
+/*=========================
+        FONDO
+=========================*/
 
 body::before{
 
@@ -35,390 +43,1136 @@ body::before{
 
     position:fixed;
 
-    width:100%;
-    height:100%;
-
-    left:0;
-    top:0;
+    inset:0;
 
     background:
-    radial-gradient(circle at 20% 20%,rgba(255,255,255,.08),transparent 30%),
-    radial-gradient(circle at 80% 30%,rgba(255,255,255,.06),transparent 35%),
-    radial-gradient(circle at 50% 80%,rgba(255,255,255,.05),transparent 40%);
 
-    animation:fondo 15s linear infinite alternate;
+    radial-gradient(circle at 15% 25%,rgba(0,183,255,.25),transparent 30%),
 
-    z-index:-1;
+    radial-gradient(circle at 80% 20%,rgba(255,255,255,.12),transparent 35%),
 
-}
+    radial-gradient(circle at 50% 85%,rgba(0,162,255,.18),transparent 40%),
 
-@keyframes fondo{
+    linear-gradient(135deg,#07152d,#102d5d,#143d72,#07152d);
 
-    from{
+    background-size:200% 200%;
 
-        transform:scale(1);
+    animation:backgroundMove 18s ease infinite;
 
-    }
-
-    to{
-
-        transform:scale(1.15);
-
-    }
+    z-index:-3;
 
 }
 
 
-/* =========================
-   HERO
-========================= */
+/*=========================
+    PARTICULAS
+=========================*/
 
-.hero{
+#particles{
 
-    min-height:100vh;
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-2;
+
+    pointer-events:none;
+
+}
+
+
+/*=========================
+    LUZ DEL CURSOR
+=========================*/
+
+#cursor-light{
+
+    position:fixed;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:radial-gradient(circle,
+    rgba(255,255,255,.28),
+    rgba(255,255,255,.08),
+    transparent 70%);
+
+    filter:blur(15px);
+
+    transform:translate(-50%,-50%);
+
+    z-index:999;
+
+}
+
+
+/*=========================
+      CONTENEDOR
+=========================*/
+
+.container{
+
+    width:min(1300px,92%);
+
+    margin:auto;
+
+    padding:40px 0 80px;
+
+}
+
+
+/*=========================
+       HEADER
+=========================*/
+
+header{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+header h1{
+
+    font-size:3.5rem;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    margin-bottom:15px;
+
+    text-shadow:
+
+    0 0 20px rgba(0,162,255,.6),
+
+    0 0 40px rgba(0,162,255,.25);
+
+    animation:titleFloat 5s ease-in-out infinite;
+
+}
+
+header p{
+
+    font-size:1.2rem;
+
+    opacity:.9;
+
+    letter-spacing:1px;
+
+}
+
+
+/*=========================
+        TARJETAS
+=========================*/
+
+section{
+
+    margin-bottom:45px;
+
+}
+
+.glass{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:22px;
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.35);
+
+}
+
+
+/*=========================
+      SCROLL BAR
+=========================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#09192f;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2d8cff;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#57b0ff;
+
+}
+
+
+/*=========================
+      ANIMACIONES
+=========================*/
+
+@keyframes backgroundMove{
+
+    0%{
+
+        background-position:0% 50%;
+
+    }
+
+    50%{
+
+        background-position:100% 50%;
+
+    }
+
+    100%{
+
+        background-position:0% 50%;
+
+    }
+
+}
+
+@keyframes titleFloat{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+.fadeIn{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:1s;
+
+}
+
+.fadeIn.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+/*==================================================
+                PARTE 2
+        BANDERAS + BOTONES
+===================================================*/
+
+
+/*=========================
+        BANDERAS
+=========================*/
+
+.flags{
 
     display:flex;
-
-    flex-direction:column;
 
     justify-content:center;
 
     align-items:center;
 
-    text-align:center;
+    gap:70px;
 
-    padding:40px;
+    margin:70px 0;
 
-}
-
-.hero h1{
-
-    font-size:3rem;
-
-    margin-bottom:20px;
+    flex-wrap:wrap;
 
 }
 
-.hero p{
+.country{
 
-    font-size:1.3rem;
+    position:relative;
 
-    margin-bottom:35px;
-
-    opacity:.9;
-
-}
-
-#startBtn{
-
-    padding:18px 40px;
-
-    border:none;
-
-    border-radius:40px;
-
-    font-size:18px;
-
-    cursor:pointer;
-
-    background:#ffcc00;
-
-    color:#222;
-
-    transition:.3s;
-
-    font-weight:bold;
-
-}
-
-#startBtn:hover{
-
-    transform:scale(1.1);
-
-    background:white;
-
-}
-
-
-/* =========================
-   SECCIONES
-========================= */
-
-section{
-
-    width:min(1200px,90%);
-
-    margin:auto;
-
-    margin-bottom:80px;
+    width:300px;
 
     padding:35px;
 
     border-radius:25px;
 
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(12px);
-
-    box-shadow:0 8px 25px rgba(0,0,0,.3);
-
-}
-
-section h2{
-
     text-align:center;
 
-    margin-bottom:35px;
+    cursor:pointer;
 
-    font-size:2rem;
+    overflow:hidden;
 
-}
+    background:rgba(255,255,255,.08);
 
+    backdrop-filter:blur(18px);
 
-/* =========================
-   TARJETAS
-========================= */
+    border:1px solid rgba(255,255,255,.15);
 
-.cards{
+    box-shadow:
 
-    display:grid;
+    0 20px 45px rgba(0,0,0,.35);
 
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-    gap:25px;
-
-}
-
-
-/* =========================
-   FLIP CARD
-========================= */
-
-.flip-card{
-
-    perspective:1000px;
-
-}
-
-.flip-inner{
-
-    position:relative;
-
-    width:100%;
-
-    height:220px;
-
-    transition:1s;
+    transition:.6s;
 
     transform-style:preserve-3d;
 
 }
 
-.flip-card:hover .flip-inner{
 
-    transform:rotateY(180deg);
+/*=========================
+      EFECTO 3D
+=========================*/
+
+.country:hover{
+
+    transform:
+
+    perspective(1200px)
+
+    rotateX(8deg)
+
+    rotateY(-8deg)
+
+    translateY(-15px)
+
+    scale(1.04);
+
+    box-shadow:
+
+    0 30px 60px rgba(0,0,0,.45),
+
+    0 0 30px rgba(0,162,255,.45);
 
 }
 
-.front,
-.back{
+
+/*=========================
+      BRILLO
+=========================*/
+
+.country::before{
+
+    content:"";
 
     position:absolute;
 
-    width:100%;
-    height:100%;
+    top:-120%;
 
-    border-radius:20px;
+    left:-50%;
+
+    width:80%;
+
+    height:320%;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.35),
+
+        transparent
+
+    );
+
+    transform:rotate(25deg);
+
+    transition:.8s;
+
+}
+
+.country:hover::before{
+
+    left:170%;
+
+}
+
+
+/*=========================
+       BANDERAS
+=========================*/
+
+.country img{
+
+    width:180px;
+
+    height:auto;
+
+    margin-bottom:20px;
+
+    transition:.5s;
+
+    filter:
+
+    drop-shadow(0 10px 20px rgba(0,0,0,.45));
+
+}
+
+.country:hover img{
+
+    transform:
+
+    scale(1.15)
+
+    rotate(-2deg);
+
+}
+
+
+/*=========================
+        TITULO
+=========================*/
+
+.country h2{
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+    font-weight:700;
+
+}
+
+.country p{
+
+    opacity:.9;
+
+    line-height:1.7;
+
+}
+
+
+/*=========================
+      EFECTO LUZ
+=========================*/
+
+.country::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    transition:.5s;
+
+}
+
+.country:hover::after{
+
+    border-color:#4fc3ff;
+
+    box-shadow:
+
+    inset 0 0 25px rgba(255,255,255,.15);
+
+}
+
+
+/*=========================
+          VS
+=========================*/
+
+.vs{
+
+    font-size:4rem;
+
+    font-weight:bold;
+
+    color:#6dc7ff;
+
+    text-shadow:
+
+    0 0 25px #00b7ff,
+
+    0 0 45px #008cff;
+
+    animation:vsPulse 2s infinite;
+
+}
+
+
+/*=========================
+        BOTONES
+=========================*/
+
+.buttons{
 
     display:flex;
 
     justify-content:center;
 
-    align-items:center;
-
-    padding:20px;
-
-    text-align:center;
-
-    backface-visibility:hidden;
-
-    font-size:18px;
-
-}
-
-.front{
-
-    background:linear-gradient(135deg,#00b4db,#0083b0);
-
-    font-size:22px;
-
-    font-weight:bold;
-
-}
-
-.back{
-
-    transform:rotateY(180deg);
-
-    background:linear-gradient(135deg,#4CAF50,#2E7D32);
-
-}
-
-
-/* =========================
-   HAITI
-========================= */
-
-#haitiCards{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
     gap:25px;
 
+    margin-bottom:60px;
+
+    flex-wrap:wrap;
+
 }
 
+.buttons button{
 
-/* =========================
-   TABLA
-========================= */
+    position:relative;
 
-table{
+    padding:18px 45px;
 
-    width:100%;
+    font-size:17px;
 
-    border-collapse:collapse;
+    font-weight:600;
+
+    border:none;
+
+    border-radius:60px;
+
+    cursor:pointer;
+
+    color:white;
 
     overflow:hidden;
 
-    border-radius:15px;
+    transition:.4s;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #008cff,
+
+        #00d2ff
+
+    );
+
+    box-shadow:
+
+    0 10px 30px rgba(0,140,255,.35);
 
 }
 
-th{
 
-    background:#1565c0;
+/*=========================
+     HOVER BOTON
+=========================*/
 
-    padding:15px;
+.buttons button:hover{
+
+    transform:
+
+    translateY(-6px)
+
+    scale(1.05);
+
+    box-shadow:
+
+    0 20px 45px rgba(0,162,255,.5);
 
 }
 
-td{
+
+/*=========================
+      RIPPLE
+=========================*/
+
+.buttons button::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:0;
+
+    height:0;
+
+    background:
+
+    rgba(255,255,255,.35);
+
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+
+    left:50%;
+
+    top:50%;
+
+    transition:.6s;
+
+}
+
+.buttons button:hover::before{
+
+    width:450px;
+
+    height:450px;
+
+}
+
+
+/*=========================
+     TEXTO BOTON
+=========================*/
+
+.buttons button span{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/*=========================
+       ANIMACIONES
+=========================*/
+
+@keyframes vsPulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.12);
+
+        text-shadow:
+
+        0 0 40px #00b7ff,
+
+        0 0 70px white;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/*=========================
+      RESPONSIVE
+=========================*/
+
+@media(max-width:900px){
+
+.flags{
+
+    flex-direction:column;
+
+}
+
+.vs{
+
+    font-size:3rem;
+
+}
+
+.country{
+
+    width:100%;
+
+    max-width:380px;
+
+}
+
+.buttons{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.buttons button{
+
+    width:280px;
+
+}
+
+}
+/*==================================================
+                PARTE 3
+         CUADRO COMPARATIVO
+===================================================*/
+
+
+/*=========================
+      CONTENEDOR TABLA
+=========================*/
+
+.comparison{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:40px;
+
+    margin-bottom:70px;
+
+}
+
+.table{
+
+    width:100%;
+
+    max-width:1300px;
+
+    border-radius:25px;
+
+    overflow:hidden;
 
     background:rgba(255,255,255,.08);
 
-    padding:15px;
+    backdrop-filter:blur(18px);
 
-    text-align:center;
+    border:1px solid rgba(255,255,255,.15);
 
-}
+    box-shadow:
 
-tr:hover td{
-
-    background:rgba(255,255,255,.15);
+    0 20px 45px rgba(0,0,0,.35);
 
 }
 
 
-/* =========================
-   ECUADOR
-========================= */
+/*=========================
+       FILAS
+=========================*/
 
-#ecuador ul{
+.row{
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:
 
-    gap:20px;
+    1.1fr
 
-    list-style:none;
+    1fr
+
+    1fr;
+
+    align-items:center;
 
 }
 
-#ecuador li{
 
-    background:#1976d2;
+/*=========================
+      ENCABEZADO
+=========================*/
 
-    padding:25px;
+.header{
 
-    border-radius:18px;
+    background:
 
-    transition:.3s;
+    linear-gradient(
 
-    text-align:center;
+        135deg,
+
+        #0057b8,
+
+        #008cff
+
+    );
+
+    font-size:1.2rem;
 
     font-weight:bold;
 
-}
-
-#ecuador li:hover{
-
-    transform:translateY(-10px);
-
-    background:#42a5f5;
+    text-align:center;
 
 }
 
+.header div{
 
-/* =========================
-   REFERENCIAS
-========================= */
+    padding:22px;
 
-section ul{
+}
+
+
+/*=========================
+      FILAS NORMALES
+=========================*/
+
+.card{
+
+    position:relative;
+
+    transition:.45s;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+}
+
+.card div{
+
+    padding:28px;
+
+    min-height:140px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    line-height:1.7;
+
+}
+
+
+/*=========================
+      SEPARADORES
+=========================*/
+
+.card div{
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.card div:not(:last-child){
+
+    border-right:1px solid rgba(255,255,255,.08);
+
+}
+
+
+/*=========================
+      HOVER
+=========================*/
+
+.card:hover{
+
+    transform:
+
+    scale(1.02)
+
+    translateY(-5px);
+
+    background:
+
+    rgba(255,255,255,.12);
+
+}
+
+
+/*=========================
+      BRILLO
+=========================*/
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120%;
+
+    left:-60%;
+
+    width:70%;
+
+    height:320%;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.30),
+
+        transparent
+
+    );
+
+    transform:rotate(25deg);
+
+    transition:.8s;
+
+}
+
+.card:hover::before{
+
+    left:170%;
+
+}
+
+
+/*=========================
+      COLUMNA CUBA
+=========================*/
+
+.card div:nth-child(2){
+
+    color:#8bd3ff;
+
+    font-weight:600;
+
+}
+
+
+/*=========================
+      COLUMNA HAITI
+=========================*/
+
+.card div:nth-child(3){
+
+    color:#ffd0d0;
+
+    font-weight:600;
+
+}
+
+
+/*=========================
+      PRIMERA COLUMNA
+=========================*/
+
+.card div:first-child{
+
+    font-size:1.05rem;
+
+    font-weight:bold;
+
+    background:rgba(255,255,255,.04);
+
+}
+
+
+/*=========================
+      SOMBRA
+=========================*/
+
+.card:hover{
+
+    box-shadow:
+
+    inset 0 0 30px rgba(255,255,255,.08),
+
+    0 15px 30px rgba(0,0,0,.25);
+
+}
+
+
+/*=========================
+      TITULO TABLA
+=========================*/
+
+.comparison::before{
+
+    content:"📊 Cuadro Comparativo";
+
+    position:absolute;
+
+    margin-top:-70px;
+
+    font-size:2rem;
+
+    font-weight:bold;
+
+    color:white;
+
+    text-shadow:
+
+    0 0 20px rgba(0,162,255,.5);
+
+}
+
+
+/*=========================
+      REFERENCIAS
+=========================*/
+
+#references{
+
+    margin-top:70px;
+
+    text-align:center;
+
+}
+
+#references h2{
+
+    margin-bottom:20px;
+
+    font-size:2rem;
+
+}
+
+#references ul{
 
     list-style:none;
 
 }
 
-section ul li{
+#references li{
 
     margin:12px 0;
 
-    font-size:18px;
+    transition:.35s;
+
+}
+
+#references li:hover{
+
+    color:#7fd6ff;
+
+    transform:translateX(8px);
 
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/*=========================
+      FOOTER
+=========================*/
 
 footer{
 
-    padding:35px;
-
     text-align:center;
 
-    background:#081b29;
+    padding:40px;
 
-    margin-top:60px;
+    opacity:.75;
 
 }
 
 
-/* =========================
-   ANIMACIONES
-========================= */
+/*=========================
+      RESPONSIVE
+=========================*/
 
-section{
+@media(max-width:900px){
+
+.row{
+
+    grid-template-columns:1fr;
+
+}
+
+.header{
+
+    display:none;
+
+}
+
+.card{
+
+    margin-bottom:25px;
+
+}
+
+.card div{
+
+    border-right:none !important;
+
+}
+
+.card div:first-child{
+
+    background:#0068c8;
+
+    color:white;
+
+    font-size:1.1rem;
+
+}
+
+}
+/*==================================================
+                PARTE 4
+       EFECTOS FINALES Y ANIMACIONES
+===================================================*/
+
+
+/*=========================
+     ANIMACIÓN DE ENTRADA
+=========================*/
+
+header,
+.flags,
+.buttons,
+.comparison,
+#references,
+footer{
 
     opacity:0;
 
     transform:translateY(60px);
 
-    animation:mostrar 1s forwards;
+    animation:fadeUp .9s forwards;
 
 }
 
-section:nth-child(1){animation-delay:.2s;}
-section:nth-child(2){animation-delay:.4s;}
-section:nth-child(3){animation-delay:.6s;}
-section:nth-child(4){animation-delay:.8s;}
-section:nth-child(5){animation-delay:1s;}
+header{animation-delay:.2s;}
+.flags{animation-delay:.4s;}
+.buttons{animation-delay:.6s;}
+.comparison{animation-delay:.8s;}
+#references{animation-delay:1s;}
+footer{animation-delay:1.2s;}
 
-@keyframes mostrar{
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(60px);
+
+    }
 
     to{
 
@@ -431,43 +1185,369 @@ section:nth-child(5){animation-delay:1s;}
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/*=========================
+      PARTÍCULAS
+=========================*/
+
+.particle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.45);
+
+    animation:float linear infinite;
+
+    pointer-events:none;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(100vh) scale(.3);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translateY(-120px) scale(1);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/*=========================
+      BRILLO GENERAL
+=========================*/
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(circle at center,
+
+    rgba(255,255,255,.03),
+
+    transparent 70%);
+
+    mix-blend-mode:screen;
+
+    animation:pulseLight 6s infinite;
+
+}
+
+@keyframes pulseLight{
+
+    0%,100%{
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/*=========================
+      HOVER GENERAL
+=========================*/
+
+.country,
+.card,
+button{
+
+    will-change:transform;
+
+}
+
+
+/*=========================
+      EFECTO GLASS
+=========================*/
+
+.country:hover,
+.card:hover,
+.table:hover{
+
+    backdrop-filter:blur(25px);
+
+}
+
+
+/*=========================
+      BOTONES
+=========================*/
+
+button:active{
+
+    transform:scale(.95);
+
+}
+
+
+/*=========================
+      SOMBRAS
+=========================*/
+
+.country:hover{
+
+    box-shadow:
+
+    0 35px 70px rgba(0,0,0,.45),
+
+    0 0 35px rgba(0,153,255,.35);
+
+}
+
+.card:hover{
+
+    box-shadow:
+
+    0 20px 40px rgba(0,0,0,.25),
+
+    inset 0 0 20px rgba(255,255,255,.08);
+
+}
+
+
+/*=========================
+      TRANSICIONES
+=========================*/
+
+*{
+
+    transition:
+
+    background .4s,
+
+    color .4s,
+
+    transform .4s,
+
+    box-shadow .4s,
+
+    border .4s;
+
+}
+
+
+/*=========================
+      SELECCIÓN
+=========================*/
+
+::selection{
+
+    background:#0ea5ff;
+
+    color:white;
+
+}
+
+
+/*=========================
+      RESPONSIVE TABLET
+=========================*/
+
+@media (max-width:1024px){
+
+header h1{
+
+    font-size:2.6rem;
+
+}
+
+.country{
+
+    width:260px;
+
+}
+
+}
+
+
+/*=========================
+      RESPONSIVE MÓVIL
+=========================*/
 
 @media(max-width:768px){
 
-.hero h1{
+.container{
+
+    width:95%;
+
+}
+
+header h1{
 
     font-size:2rem;
 
 }
 
-.hero p{
+header p{
 
     font-size:1rem;
 
 }
 
-section{
+.flags{
 
-    padding:20px;
-
-}
-
-.front,
-.back{
-
-    font-size:16px;
+    gap:30px;
 
 }
 
-table{
+.country{
 
-    display:block;
+    width:100%;
 
-    overflow-x:auto;
+    max-width:340px;
+
+}
+
+.country img{
+
+    width:140px;
+
+}
+
+.vs{
+
+    font-size:2.5rem;
+
+}
+
+.buttons{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.buttons button{
+
+    width:100%;
+
+    max-width:300px;
+
+}
+
+.table{
+
+    border-radius:15px;
+
+}
+
+.card div{
+
+    padding:18px;
 
 }
 
 }
+
+
+/*=========================
+      PANTALLAS GRANDES
+=========================*/
+
+@media(min-width:1600px){
+
+.container{
+
+    max-width:1500px;
+
+}
+
+header h1{
+
+    font-size:4rem;
+
+}
+
+.country{
+
+    width:340px;
+
+}
+
+}
+
+
+/*=========================
+      EFECTO PARALLAX
+=========================*/
+
+.country{
+
+    transform-style:preserve-3d;
+
+}
+
+.country img{
+
+    transform:translateZ(40px);
+
+}
+
+.country h2{
+
+    transform:translateZ(25px);
+
+}
+
+.country p{
+
+    transform:translateZ(15px);
+
+}
+
+
+/*=========================
+      EFECTO GLOW
+=========================*/
+
+.country:hover h2{
+
+    text-shadow:
+
+    0 0 20px #53c7ff,
+
+    0 0 40px #53c7ff;
+
+}
+
+.card:hover div:first-child{
+
+    color:#7dd3fc;
+
+}
+/*=========================
+      FIN
+=========================*/
