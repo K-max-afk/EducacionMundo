@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Educación y Oportunidades en el Mundo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── AUDIO ── -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ── MUSIC PANEL ── -->
+<div class="music-panel" id="musicPanel">
+  <button class="music-fab" id="musicBtn" title="Reproducir / Pausar música">
+    <svg id="iPlay" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="iPause" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    <span class="wave-bars" id="waveBars"><i></i><i></i><i></i><i></i></span>
+  </button>
+  <div class="vol-panel" id="volPanel">
+    <button class="vol-btn" id="volDown" title="Bajar volumen">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M18.5 12A4.5 4.5 0 0015 7.6V16.4A4.5 4.5 0 0018.5 12zM5 9v6h4l5 5V4L9 9H5z"/></svg>
+      <span class="vol-line vol-line-off"></span>
+    </button>
+    <input type="range" id="volSlider" class="vol-slider" min="0" max="100" value="40" step="1" title="Volumen">
+    <button class="vol-btn" id="volUp" title="Subir volumen">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0013 7.6V16.4c1.9-.9 3.5-2.8 3.5-4.4zm2.5 0c0 2.8-1.5 5.2-3.5 6.5V5.5C17.5 6.8 19 9.2 19 12z"/></svg>
+    </button>
+    <span class="vol-pct" id="volPct">40%</span>
+  </div>
+</div>
+
+<!-- ── PROGRESS DOTS ── -->
+<nav class="slide-dots" id="dots" aria-label="Navegación de diapositivas"></nav>
+
+<!-- ── SLIDE COUNTER ── -->
+<div class="slide-counter" id="counter">1 / 10</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 1 — PORTADA
+════════════════════════════════════════ -->
+<div class="slide active" id="s1">
+  <canvas id="particles"></canvas>
+  <div class="s1-content">
+    <div class="eyebrow anim-up">🌍 Investigación Comparativa · 2024–2025</div>
+    <h1 class="anim-up delay1">Educación y<br><span class="grad-text">Oportunidades</span><br>en el Mundo</h1>
+    <p class="hero-sub anim-up delay2">Cuba 🇨🇺 vs Haití 🇭🇹 — Acceso, igualdad de género,<br>programas de apoyo y empoderamiento.</p>
+    <div class="start-hint anim-up delay3">
+      Usa los botones o las flechas del teclado para navegar
+    </div>
+  </div>
+  <div class="s1-glow"></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 2 — LOS PAÍSES
+════════════════════════════════════════ -->
+<div class="slide" id="s2">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-tag">01 — Los Países</span>
+      <h2>Dos realidades, <em>un mismo derecho</em></h2>
+    </div>
+    <div class="countries-row">
+
+      <div class="country-panel cuba-panel">
+        <div class="cp-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1527608673-99b5c39d29d0?w=700&q=80"
+               alt="La Habana, Cuba" class="cp-photo"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="cp-photo-fallback" style="display:none;background:linear-gradient(135deg,#003087,#BF0A30)">🇨🇺</div>
+        </div>
+        <div class="cp-flag-row">
+          <img src="https://flagcdn.com/w80/cu.png" alt="Bandera Cuba" class="cp-flag">
+          <div>
+            <div class="cp-name">Cuba</div>
+            <div class="cp-tag green-tag">Alto acceso educativo</div>
+          </div>
+        </div>
+        <ul class="cp-facts">
+          <li><strong>Capital:</strong> La Habana</li>
+          <li><strong>Población:</strong> 11.2 millones</li>
+          <li><strong>Alfabetización:</strong> 99.7 %</li>
+          <li><strong>Educación:</strong> Gratuita en todos los niveles</li>
+          <li><strong>Inversión:</strong> ~12 % del PIB</li>
+        </ul>
+      </div>
+
+      <div class="vs-col">
+        <div class="vs-ring"><span>VS</span></div>
+      </div>
+
+      <div class="country-panel haiti-panel">
+        <div class="cp-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1574482620826-cb3d0f72fe3d?w=700&q=80"
+               alt="Puerto Príncipe, Haití" class="cp-photo"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="cp-photo-fallback" style="display:none;background:linear-gradient(135deg,#00209F,#D21034)">🇭🇹</div>
+        </div>
+        <div class="cp-flag-row">
+          <img src="https://flagcdn.com/w80/ht.png" alt="Bandera Haití" class="cp-flag">
+          <div>
+            <div class="cp-name">Haití</div>
+            <div class="cp-tag red-tag">Bajo acceso educativo</div>
+          </div>
+        </div>
+        <ul class="cp-facts">
+          <li><strong>Capital:</strong> Puerto Príncipe</li>
+          <li><strong>Población:</strong> 11.7 millones</li>
+          <li><strong>Alfabetización:</strong> 61.7 %</li>
+          <li><strong>Educación:</strong> ~80 % escuelas privadas</li>
+          <li><strong>Inversión:</strong> ~3 % del PIB</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 3 — CUADRO COMPARATIVO (TABLA)
+════════════════════════════════════════ -->
+<div class="slide" id="s3">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-tag">02 — Cuadro Comparativo</span>
+      <h2>📋 Análisis Comparativo</h2>
+      <p class="slide-desc">Cuba 🇨🇺 vs Haití 🇭🇹 — Las cuatro dimensiones educativas</p>
+    </div>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th class="th-dim">Dimensión de Análisis</th>
+            <th class="th-cuba">🇨🇺 Cuba</th>
+            <th class="th-haiti">🇭🇹 Haití</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-dim">
+              <span class="dim-icon">📚</span>
+              <strong>Acceso a la Educación</strong>
+            </td>
+            <td class="td-cuba">
+              Educación completamente gratuita desde preescolar hasta universidad. Tasa de alfabetización adulta del <strong>99.7 %</strong>, una de las más altas de América Latina. Cobertura primaria ~99 %, secundaria ~90 %. Ratio maestro/alumno de 1:9 en primaria (UNESCO, 2024).
+            </td>
+            <td class="td-haiti">
+              Aproximadamente el <strong>80 % de las escuelas son privadas</strong> con costos inaccesibles para la mayoría. Tasa de alfabetización del <strong>61.7 %</strong>, la más baja del Caribe. Cobertura secundaria de apenas 35 %. Alta deserción por pobreza y trabajo infantil (Banco Mundial, 2024).
+            </td>
+          </tr>
+          <tr>
+            <td class="td-dim">
+              <span class="dim-icon">⚤</span>
+              <strong>Igualdad de Oportunidades entre Hombres y Mujeres</strong>
+            </td>
+            <td class="td-cuba">
+              Índice de Paridad de Género (IPG) ≈ <strong>1.03</strong> en educación superior. El <strong>60 %</strong> de los graduados universitarios son mujeres. El <strong>55 %</strong> del Parlamento Nacional son mujeres. Acceso igualitario garantizado por ley desde 1961 (ONU Mujeres / PNUD, 2024).
+            </td>
+            <td class="td-haiti">
+              Fuerte brecha de género en educación secundaria y superior. Solo el <strong>~3 %</strong> del parlamento son mujeres. El matrimonio temprano y el trabajo doméstico excluyen masivamente a las niñas en zonas rurales. La violencia de género agrava la deserción femenina (PNUD, 2024).
+            </td>
+          </tr>
+          <tr>
+            <td class="td-dim">
+              <span class="dim-icon">🤝</span>
+              <strong>Programas de Apoyo Educativo</strong>
+            </td>
+            <td class="td-cuba">
+              Campaña Nacional de Alfabetización (1961): redujo el analfabetismo del 24 % al 4 % en un año. Programa <em>"Yo sí puedo"</em>, exportado a más de 30 países. ELAM: becas médicas internacionales. Inversión sostenida de <strong>~12 % del PIB</strong>. Alimentación y útiles garantizados por el Estado (UNESCO, 2024).
+            </td>
+            <td class="td-haiti">
+              Programas gestionados por organismos internacionales: UNICEF (kits escolares y agua potable), UNESCO (formación docente), Plan Internacional (becas para niñas) y Save the Children (educación en emergencias). Inversión estatal de apenas <strong>~3 % del PIB</strong>. Dependencia casi total del financiamiento externo (UNICEF, 2024).
+            </td>
+          </tr>
+          <tr>
+            <td class="td-dim">
+              <span class="dim-icon">💪</span>
+              <strong>Empoderamiento y Autonomía de las Personas</strong>
+            </td>
+            <td class="td-cuba">
+              Trabajo infantil <strong>&lt; 1 %</strong>, prácticamente eliminado. Alta formación profesional: médicos, ingenieros y docentes proyectados a nivel internacional. Las mujeres ejercen plena autonomía académica y profesional. La educación y la salud son derechos sociales vinculados (PNUD, 2024).
+            </td>
+            <td class="td-haiti">
+              Trabajo infantil afecta al <strong>~25 %</strong> de los menores. Fuga de talentos constante hacia EE. UU., Canadá y República Dominicana. Baja movilidad social por trampa de pobreza estructural. Los desastres naturales y la inseguridad erosionan continuamente los avances educativos (Banco Mundial, 2024).
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 4 — ACCESO A LA EDUCACIÓN
+════════════════════════════════════════ -->
+<div class="slide" id="s4">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-tag">03 — Detalle Comparativo</span>
+      <h2>📚 Acceso a la Educación</h2>
+      <p class="slide-desc">Cobertura, gratuidad, infraestructura y conectividad</p>
+    </div>
+    <div class="compare-cols">
+      <div class="cc cuba-cc">
+        <div class="cc-head"><img src="https://flagcdn.com/w40/cu.png" alt="Cuba"> Cuba</div>
+        <ul class="cc-list">
+          <li class="g">Educación gratuita en todos los niveles (preescolar → universidad)</li>
+          <li class="g">Alfabetización adulta: <strong>99.7%</strong> — una de las más altas de América</li>
+          <li class="g">Cobertura primaria ~99%, secundaria ~90%</li>
+          <li class="g">1 maestro por cada 9 estudiantes en primaria</li>
+          <li class="m">Infraestructura deteriorada por restricciones económicas</li>
+          <li class="m">Acceso a internet educativo limitado pero en expansión</li>
+        </ul>
+      </div>
+      <div class="cc haiti-cc">
+        <div class="cc-head"><img src="https://flagcdn.com/w40/ht.png" alt="Haití"> Haití</div>
+        <ul class="cc-list">
+          <li class="b">~80% de escuelas son privadas con costos impagables</li>
+          <li class="b">Alfabetización adulta: <strong>61.7%</strong> — la más baja del Caribe</li>
+          <li class="b">Cobertura secundaria apenas ~35% de la población</li>
+          <li class="b">Infraestructura gravemente dañada por terremotos (2010 y 2021)</li>
+          <li class="m">Cobertura primaria ~89% con alta tasa de deserción</li>
+          <li class="b">Solo ~14% de hogares con acceso a internet</li>
+        </ul>
+      </div>
+    </div>
+    <div class="photo-strip">
+      <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=420&q=75" alt="Aula de clases" class="strip-photo"
+           onerror="this.style.display='none'">
+      <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=420&q=75" alt="Libros educación" class="strip-photo"
+           onerror="this.style.display='none'">
+      <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=420&q=75" alt="Graduados" class="strip-photo"
+           onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 5 — IGUALDAD DE GÉNERO
+════════════════════════════════════════ -->
+<div class="slide" id="s5">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-tag">03 — Detalle Comparativo</span>
+      <h2>⚤ Igualdad de Oportunidades entre Hombres y Mujeres</h2>
+      <p class="slide-desc">Paridad de género, representación y barreras culturales</p>
+    </div>
+    <div class="compare-cols">
+      <div class="cc cuba-cc">
+        <div class="cc-head"><img src="https://flagcdn.com/w40/cu.png" alt="Cuba"> Cuba</div>
+        <ul class="cc-list">
+          <li class="g">Índice de Paridad de Género (IPG) ≈ <strong>1.03</strong> en universitaria</li>
+          <li class="g"><strong>60%</strong> de los graduados universitarios son mujeres</li>
+          <li class="g"><strong>55%</strong> del Parlamento Nacional son mujeres</li>
+          <li class="g">Acceso igualitario garantizado por ley desde 1961</li>
+          <li class="g">Alta representación femenina en medicina y ciencias</li>
+          <li class="m">Persisten roles de género en el ámbito doméstico</li>
+        </ul>
+      </div>
+      <div class="cc haiti-cc">
+        <div class="cc-head"><img src="https://flagcdn.com/w40/ht.png" alt="Haití"> Haití</div>
+        <ul class="cc-list">
+          <li class="m">IPG ≈ 0.97 en primaria (casi paridad)</li>
+          <li class="b">Fuerte brecha de género en secundaria y nivel superior</li>
+          <li class="b">Solo <strong>~3%</strong> de representación femenina en parlamento</li>
+          <li class="b">Matrimonio temprano interrumpe escolarización de niñas</li>
+          <li class="b">Trabajo doméstico excluye a niñas en zonas rurales</li>
+          <li class="b">Violencia de género agrava la exclusión escolar femenina</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stat-highlight-row">
+      <div class="sh-card sh-green">
+        <div class="sh-num">55%</div>
+        <div class="sh-lbl">Mujeres en Parlamento<br>🇨🇺 Cuba</div>
+      </div>
+      <div class="sh-card sh-red">
+        <div class="sh-num">3%</div>
+        <div class="sh-lbl">Mujeres en Parlamento<br>🇭🇹 Haití</div>
+      </div>
+      <div class="sh-card sh-green">
+        <div class="sh-num">60%</div>
+        <div class="sh-lbl">Mujeres graduadas<br>universidad Cuba</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 6 — PROGRAMAS DE APOYO
+════════════════════════════════════════ -->
+<div class="slide" id="s6">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-tag">03 — Detalle Comparativo</span>
+      <h2>🤝 Programas de Apoyo Educativo</h2>
+      <p class="slide-desc">Iniciativas estatales e internacionales de soporte</p>
+    </div>
+    <div class="compare-cols">
+      <div class="cc cuba-cc">
+        <div class="cc-head"><img src="https://flagcdn.com/w40/cu.png" alt="Cuba"> Cuba</div>
+        <ul class="cc-list">
+          <li class="g"><strong>Campaña de Alfabetización (1961):</strong> analfabetismo del 24% al 4% en un año</li>
+          <li class="g"><strong>ELAM:</strong> Escuela Latinoamericana de Medicina — becas internacionales</li>
+          <li class="g">Inversión: <strong>~12% del PIB</strong> en educación</li>
+          <li class="g">Programa <em>"Yo sí puedo"</em>: exportado a más de 30 países</li>
+          <li class="g">Alimentación y útiles escolares garantizados por el Estado</li>
+          <li class="g">Becas universitarias para estudiantes nacionales y extranjeros</li>
+        </ul>
+      </div>
+      <div class="cc haiti-cc">
+        <div class="cc-head"><img src="https://flagcdn.com/w40/ht.png" alt="Haití"> Haití</div>
+        <ul class="cc-list">
+          <li class="m"><strong>UNICEF:</strong> programa WASH en escuelas y kits educativos</li>
+          <li class="m"><strong>Plan Internacional:</strong> becas para niñas en situación de riesgo</li>
+          <li class="m"><strong>UNESCO:</strong> fortalecimiento curricular y formación docente</li>
+          <li class="m"><strong>Save the Children:</strong> educación en emergencias post-sismo</li>
+          <li class="b">Inversión estatal: solo <strong>~3% del PIB</strong></li>
+          <li class="b">Dependencia total del financiamiento externo para programas</li>
+        </ul>
+      </div>
+    </div>
+    <div class="program-badges">
+      <span class="pb green">UNICEF</span>
+      <span class="pb green">UNESCO</span>
+      <span class="pb green">Plan Internacional</span>
+      <span class="pb green">Save the Children</span>
+      <span class="pb blue">ELAM Cuba</span>
+      <span class="pb blue">Yo sí puedo</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 7 — EMPODERAMIENTO
+════════════════════════════════════════ -->
+<div class="slide" id="s7">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-tag">03 — Detalle Comparativo</span>
+      <h2>💪 Empoderamiento y Autonomía de las Personas</h2>
+      <p class="slide-desc">Cómo la educación transforma vidas y sociedades</p>
+    </div>
+    <div class="compare-cols">
+      <div class="cc cuba-cc">
+        <div class="cc-head"><img src="https://flagcdn.com/w40/cu.png" alt="Cuba"> Cuba</div>
+        <ul class="cc-list">
+          <li class="g">Alta formación profesional: médicos, ingenieros, docentes exportados</li>
+          <li class="g">Trabajo infantil prácticamente <strong>eliminado</strong> (&lt;1%)</li>
+          <li class="g">Sistema de salud gratuito directamente vinculado a la educación</li>
+          <li class="g">Mujeres con plena autonomía académica y profesional</li>
+          <li class="m">Movilidad social moderada (limitada por el modelo económico)</li>
+          <li class="m">Emprendimiento creciente tras reformas económicas recientes</li>
+        </ul>
+      </div>
+      <div class="cc haiti-cc">
+        <div class="cc-head"><img src="https://flagcdn.com/w40/ht.png" alt="Haití"> Haití</div>
+        <ul class="cc-list">
+          <li class="b">Trabajo infantil elevado: <strong>~25%</strong> de los niños trabajan</li>
+          <li class="b">Fuga de cerebros constante hacia EE.UU., Canadá y Rep. Dominicana</li>
+          <li class="b">Baja movilidad social por trampa de pobreza estructural</li>
+          <li class="m">La educación reduce el riesgo de violencia y explotación</li>
+          <li class="m">Egresados universitarios con mayor capacidad de liderazgo comunitario</li>
+          <li class="b">Desastres naturales e inseguridad erosionan avances educativos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="photo-strip">
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=420&q=75"
+           alt="Niños en clase" class="strip-photo" onerror="this.style.display='none'">
+      <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=420&q=75"
+           alt="Mujer graduada" class="strip-photo" onerror="this.style.display='none'">
+      <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?w=420&q=75"
+           alt="Estudiantes aprendiendo" class="strip-photo" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 8 — INDICADORES
+════════════════════════════════════════ -->
+<div class="slide" id="s8">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-tag">04 — Indicadores</span>
+      <h2>📊 Los números que lo dicen todo</h2>
+    </div>
+    <div class="bars-grid">
+
+      <div class="bar-card">
+        <div class="bar-title">📖 Alfabetización adulta</div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/cu.png" alt=""> Cuba</span>
+          <div class="bar-track"><div class="bar-fill bar-green" data-w="99.7"></div></div><span class="bar-val gv">99.7%</span></div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/ht.png" alt=""> Haití</span>
+          <div class="bar-track"><div class="bar-fill bar-red" data-w="61.7"></div></div><span class="bar-val rv">61.7%</span></div>
+        <div class="bar-src">UNESCO, 2024</div>
+      </div>
+
+      <div class="bar-card">
+        <div class="bar-title">🏫 Cobertura educación secundaria</div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/cu.png" alt=""> Cuba</span>
+          <div class="bar-track"><div class="bar-fill bar-green" data-w="90"></div></div><span class="bar-val gv">90%</span></div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/ht.png" alt=""> Haití</span>
+          <div class="bar-track"><div class="bar-fill bar-red" data-w="35"></div></div><span class="bar-val rv">35%</span></div>
+        <div class="bar-src">Banco Mundial, 2024</div>
+      </div>
+
+      <div class="bar-card">
+        <div class="bar-title">🏛️ Inversión en Educación (% PIB)</div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/cu.png" alt=""> Cuba</span>
+          <div class="bar-track"><div class="bar-fill bar-green" data-w="85"></div></div><span class="bar-val gv">~12%</span></div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/ht.png" alt=""> Haití</span>
+          <div class="bar-track"><div class="bar-fill bar-red" data-w="21"></div></div><span class="bar-val rv">~3%</span></div>
+        <div class="bar-src">PNUD, Informe de Desarrollo Humano, 2024</div>
+      </div>
+
+      <div class="bar-card">
+        <div class="bar-title">♀️ Mujeres en Parlamento Nacional</div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/cu.png" alt=""> Cuba</span>
+          <div class="bar-track"><div class="bar-fill bar-green" data-w="55"></div></div><span class="bar-val gv">55%</span></div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/ht.png" alt=""> Haití</span>
+          <div class="bar-track"><div class="bar-fill bar-red" data-w="3"></div></div><span class="bar-val rv">~3%</span></div>
+        <div class="bar-src">ONU Mujeres / PNUD, 2024</div>
+      </div>
+
+      <div class="bar-card">
+        <div class="bar-title">👶 Trabajo infantil (%)</div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/cu.png" alt=""> Cuba</span>
+          <div class="bar-track"><div class="bar-fill bar-green" data-w="1"></div></div><span class="bar-val gv">&lt;1%</span></div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/ht.png" alt=""> Haití</span>
+          <div class="bar-track"><div class="bar-fill bar-red" data-w="25"></div></div><span class="bar-val rv">~25%</span></div>
+        <div class="bar-src">UNICEF, 2024</div>
+      </div>
+
+      <div class="bar-card">
+        <div class="bar-title">🎓 Mujeres en educación superior</div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/cu.png" alt=""> Cuba</span>
+          <div class="bar-track"><div class="bar-fill bar-green" data-w="60"></div></div><span class="bar-val gv">60%</span></div>
+        <div class="bar-row"><span class="bar-lbl"><img src="https://flagcdn.com/w24/ht.png" alt=""> Haití</span>
+          <div class="bar-track"><div class="bar-fill bar-red" data-w="22"></div></div><span class="bar-val rv">~22%</span></div>
+        <div class="bar-src">UNESCO / Banco Mundial, 2024</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 9 — REFLEXIÓN
+════════════════════════════════════════ -->
+<div class="slide" id="s9">
+  <div class="slide-inner ref-slide">
+    <div class="slide-tag">05 — Reflexión</div>
+    <div class="ref-quote">"</div>
+    <blockquote class="ref-text">
+      La educación es el factor más poderoso de transformación social. El contraste entre Cuba y Haití demuestra que el compromiso político y la inversión sostenida del Estado son determinantes para garantizar el acceso universal, reducir las brechas de género y convertir la escuela en un espacio de empoderamiento real. Cuando la educación es un derecho efectivo, las personas —especialmente las mujeres— adquieren herramientas para participar plenamente en la vida económica, política y social de sus países. Haití, con su dependencia de actores externos y su subinversión estructural, ilustra cómo la ausencia de políticas educativas sólidas perpetúa la pobreza y la exclusión. El camino hacia el desarrollo humano sostenible pasa, inevitablemente, por escuelas accesibles, maestros bien formados, programas de becas inclusivos y tecnología educativa al alcance de todos.
+    </blockquote>
+    <div class="ref-icons">
+      <div class="ri-item">🎓<span>Derecho universal</span></div>
+      <div class="ri-item">♀️<span>Igualdad de género</span></div>
+      <div class="ri-item">💡<span>Empoderamiento</span></div>
+      <div class="ri-item">🌱<span>Desarrollo humano</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SLIDE 10 — REFERENCIAS APA
+════════════════════════════════════════ -->
+<div class="slide" id="s10">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-tag">06 — Referencias</span>
+      <h2>Fuentes bibliográficas <span class="apa-badge">APA 7.ª edición</span></h2>
+      <p class="slide-desc">Fuentes en español actualizadas sobre educación en Cuba y Haití</p>
+    </div>
+    <div class="refs-grid refs-grid-4">
+
+      <a class="ref-card" href="https://datos.bancomundial.org/tema/educacion" target="_blank" rel="noopener">
+        <div class="rc-num">01</div>
+        <div class="rc-body">
+          <p>Banco Mundial. (2024). <em>Datos sobre educación: Indicadores de matrícula, alfabetización e inversión — Cuba y Haití.</em> Banco Internacional de Reconstrucción y Fomento.</p>
+          <span class="rc-link">🔗 datos.bancomundial.org/tema/educacion</span>
+        </div>
+      </a>
+
+      <a class="ref-card" href="https://www.unesco.org/es/gem-report" target="_blank" rel="noopener">
+        <div class="rc-num">02</div>
+        <div class="rc-body">
+          <p>Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura (UNESCO). (2024). <em>Informe de Seguimiento de la Educación en el Mundo 2024: La tecnología en la educación — ¿Una herramienta en los términos de quién?</em> UNESCO.</p>
+          <span class="rc-link">🔗 unesco.org/es/gem-report</span>
+        </div>
+      </a>
+
+      <a class="ref-card" href="https://www.unicef.org/haiti/es/educacion" target="_blank" rel="noopener">
+        <div class="rc-num">03</div>
+        <div class="rc-body">
+          <p>Fondo de las Naciones Unidas para la Infancia (UNICEF). (2024). <em>Educación en Haití: Garantizando el derecho a aprender en un contexto de crisis.</em> UNICEF.</p>
+          <span class="rc-link">🔗 unicef.org/haiti/es/educacion</span>
+        </div>
+      </a>
+
+      <a class="ref-card" href="https://hdr.undp.org/es/content/human-development-report-2023-24" target="_blank" rel="noopener">
+        <div class="rc-num">04</div>
+        <div class="rc-body">
+          <p>Programa de las Naciones Unidas para el Desarrollo (PNUD). (2024). <em>Informe sobre Desarrollo Humano 2023–2024: Romper el estancamiento — Reimaginar la cooperación en un mundo polarizado.</em> PNUD.</p>
+          <span class="rc-link">🔗 hdr.undp.org/es</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── NAVIGATION ── -->
+<div class="nav-bar">
+  <button class="nav-btn prev-btn" id="prevBtn" disabled>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M15 18l-6-6 6-6"/></svg>
+    Anterior
+  </button>
+  <button class="nav-btn next-btn" id="nextBtn">
+    Siguiente
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
